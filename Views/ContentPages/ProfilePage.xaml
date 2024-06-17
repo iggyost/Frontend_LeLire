@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_LeLire.Views.ContentPages.ProfilePage"
+             Title="ProfilePage"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Image Source="background_bloor.png"
+               Aspect="AspectFill"></Image>
+        <VerticalStackLayout Margin="16,32">
+            <Image Source="user_icon.png"
+                   Aspect="AspectFill"
+                   WidthRequest="96"
+                   HeightRequest="96"></Image>
+            <Label Text="Имя пользователя"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontSize="24"
+                   FontFamily="Literata-SemiBold"></Label>
+            <Label Text="Мои книги"
+                   TextColor="White"
+                   FontSize="18"
+                   FontFamily="Literata-Medium"
+                   Margin="0,32,0,16"></Label>
+            <Border HeightRequest="420"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 12" BackgroundColor="#40121212">
+                <RefreshView x:Name="refreshCv"
+                             Refreshing="refreshCv_Refreshing">
+                    <CollectionView x:Name="myBooksCv"
+                                    Loaded="myBooksCv_Loaded">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical"></LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border HeightRequest="96" 
+                                        BackgroundColor="#40121212"
+                                        StrokeThickness="0"
+                                        AutomationId="{Binding BookId}"
+                                        Margin="0,8">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="58"></ColumnDefinition>
+                                            <ColumnDefinition Width="16"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="{Binding CoverImage}"
+                                               Aspect="AspectFit"
+                                               HeightRequest="96"
+                                               WidthRequest="58"></Image>
+                                        <Grid Grid.Column="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.5*"></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Label Text="{Binding Title}"
+                                                   TextColor="White"
+                                                   LineBreakMode="WordWrap"
+                                                   FontSize="18"
+                                                   Margin="0,4,8,0">
+                                                <Label.Shadow>
+                                                    <Shadow Offset="-4,4"
+                                                            Opacity="0.5"
+                                                            Radius="1"></Shadow>
+                                                </Label.Shadow>
+                                            </Label>
+                                            <Label Grid.Row="1"
+                                                   Text="{Binding Author}"
+                                                   TextColor="White"
+                                                   VerticalOptions="Center"
+                                                   FontSize="16">
+                                                <Label.Shadow>
+                                                    <Shadow Offset="-4,4"
+                                                            Opacity="0.5"
+                                                            Radius="1"></Shadow>
+                                                </Label.Shadow>
+                                            </Label>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+            </Border>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

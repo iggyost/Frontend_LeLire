@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_LeLire.Views.ContentPages.HomePage"
+             Title="HomePage"
+             Padding="-1"
+             Shell.NavBarIsVisible="False"
+             Loaded="ContentPage_Loaded">
+    <RefreshView x:Name="refresPage"
+                 Refreshing="refresPage_Refreshing">
+        <Grid>
+            <Image Source="background_bloor.png"
+               Aspect="AspectFill"></Image>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"></RowDefinition>
+                    <RowDefinition Height="288"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label VerticalOptions="End"
+                   Margin="16,8"
+                   Text="Популярное"
+                   TextColor="White"
+                   FontFamily="Literata-SemiBold"
+                   FontSize="24"></Label>
+
+                <VerticalStackLayout Grid.Row="1"
+                                 Spacing="8">
+                    <Border StrokeThickness="0"
+                        BackgroundColor="#7F000000">
+                        <VerticalStackLayout>
+                            <CarouselView x:Name="showcaseBooksCv"
+                                      Loaded="showcaseBooksCv_Loaded"
+                                      IndicatorView="carouselIv"
+                                      PeekAreaInsets="24">
+                                <CarouselView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding CoverImage}"
+                                                 AutomationId="{Binding BookId}"
+                                                 Margin="12,0"
+                                                 x:Name="bookPopularBtn"
+                                                 Clicked="bookPopularBtn_Clicked"
+                                                 WidthRequest="178"
+                                                 HeightRequest="288"></ImageButton>
+                                    </DataTemplate>
+                                </CarouselView.ItemTemplate>
+                            </CarouselView>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <IndicatorView x:Name="carouselIv"
+                           Grid.Row="3"
+                           Margin="0,8"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           IndicatorColor="DarkGray"
+                           IndicatorSize="8"
+                           SelectedIndicatorColor="#F5F5F5"></IndicatorView>
+
+                <Label VerticalOptions="Start"
+                   Grid.Row="3"
+                   Margin="8,16"
+                   Text="Все книги"
+                   TextColor="White"
+                   FontFamily="Literata-SemiBold"
+                   FontSize="24"></Label>
+                <CollectionView x:Name="allItemsCv"
+                            Loaded="allBooksCv_Loaded"
+                            Grid.Row="3"
+                            Margin="0,52,0,8">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="2"
+                                     Orientation="Vertical"
+                                     VerticalItemSpacing="8"></GridItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageButton Source="{Binding CoverImage}"
+                                     AutomationId="{Binding BookId}"
+                                     WidthRequest="146"
+                                     HeightRequest="256"
+                                     x:Name="bookAllBtn"
+                                     Clicked="bookPopularBtn_Clicked"></ImageButton>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Grid>
+    </RefreshView>
+</ContentPage>

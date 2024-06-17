@@ -1,0 +1,74 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Frontend_LeLire"
+             x:Class="Frontend_LeLire.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--RadioButton-->
+            <Style TargetType="RadioButton" x:Key="language">
+                <Setter Property="ControlTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Grid>
+                                <Border x:Name="Container"
+                                StrokeThickness="0"
+                                WidthRequest="128"
+                                HeightRequest="40">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Label x:Name="TextLabel"
+                                           FontSize="13"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           TextColor="Black"
+                                           Text="{TemplateBinding Content}"></Label>
+                                </Border>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CheckedStates">
+                                            <VisualState x:Name="Checked">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="TextLabel" 
+                                                    Property="Label.TextColor" 
+                                                    Value="White" />
+                                                    <Setter TargetName="Container"
+                                                    Property="Border.BackgroundColor" 
+                                                    Value="Black" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Unchecked">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="TextLabel" 
+                                                    Property="Label.TextColor" 
+                                                    Value="Black" />
+                                                    <Setter TargetName="Container" 
+                                                    Property="Border.BackgroundColor" 
+                                                    Value="White" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!--Вкладки Shell-->
+            <Style TargetType="Tab">
+                <Setter Property="Shell.TabBarBackgroundColor"
+                        Value="Black" />
+                <Setter Property="Shell.TabBarTitleColor"
+                        Value="White" />
+                <Setter Property="Shell.TabBarUnselectedColor"
+                        Value="LightGray" />
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

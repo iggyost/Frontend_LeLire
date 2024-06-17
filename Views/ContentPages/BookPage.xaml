@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_LeLire.Views.ContentPages.BookPage"
+             Title="BookPage"
+             Loaded="ContentPage_Loaded">
+    <Grid>
+        <Image Source="background_bloor.png"
+               Aspect="AspectFill"></Image>
+        <ImageButton HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="16"
+                     HeightRequest="32"
+                     WidthRequest="32"
+                     Aspect="AspectFill"
+                     Source="arrow_left.png"
+                     Clicked="ImageButton_Clicked"
+                     ZIndex="1"></ImageButton>
+        <ScrollView Margin="0,16">
+            <VerticalStackLayout Spacing="8">
+                <Border BackgroundColor="Black"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 10"
+                        HeightRequest="288"
+                        WidthRequest="183"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    <Image Source="{Binding CoverImage}"
+                           Aspect="AspectFill"></Image>
+                </Border>
+                <Label HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="{Binding Title}"
+                       TextColor="White"
+                       FontFamily="Literata-Bold"
+                       FontSize="28"
+                       LineBreakMode="WordWrap"></Label>
+                <Label HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="{Binding Author}"
+                       TextColor="LightGray"
+                       FontFamily="Literata-Medium"
+                       FontSize="21"></Label>
+                <Border BackgroundColor="Transparent"
+                        StrokeThickness="0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                    <Grid HorizontalOptions="Center"
+                          VerticalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="16"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="16"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Text="{Binding PageCount, StringFormat='{}{0} стр.'}"
+                               TextColor="White"
+                               FontSize="18"></Label>
+                        <Border Grid.Column="2"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Padding="16,0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 10"
+                                BackgroundColor="Black">
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Text="{Binding Cost, StringFormat='{}{0} ₽'}"
+                                   TextColor="White"
+                                   FontSize="18"
+                                   Grid.Column="2"></Label>
+                        </Border>
+                        <Label HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Text="{Binding Date, StringFormat='{}{0:yyy} год'}"
+                               TextColor="White"
+                               FontSize="18"
+                               Grid.Column="4"></Label>
+                    </Grid>
+                </Border>
+                <VerticalStackLayout Margin="16,8"
+                                     Spacing="8">
+                    <Label Text="Описание"
+                           TextColor="White"
+                           FontSize="24"></Label>
+                    <Label Text="{Binding Description}"
+                           TextColor="White"
+                           FontSize="18"
+                           FontFamily="Literata-Regular"
+                           LineBreakMode="WordWrap"
+                           Margin="0,0,0,64"></Label>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+                <Button Text="{Binding Cost,StringFormat='{}Купить | {0} ₽'}"
+                        TextColor="White"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        WidthRequest="360"
+                        Margin="16"
+                        BackgroundColor="Black"
+                        FontFamily="Literata-SemiBold"
+                        FontSize="20"
+                        x:Name="buyBookBtn"
+                        Clicked="buyBookBtn_Clicked"></Button>
+    </Grid>
+</ContentPage>

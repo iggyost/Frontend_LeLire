@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_LeLire.Views.ContentPages.TranslatePage"
+             Title="TranslatePage"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Image Source="background_bloor.png"
+               Aspect="AspectFill"></Image>
+        <Grid Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="144"></RowDefinition>
+                <RowDefinition Height="8"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="32"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border StrokeThickness="0"
+                        StrokeShape="RoundRectangle 4"
+                        BackgroundColor="#7F000000"
+                        Margin="10,0">
+                    <Label Text="Русский"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="16"
+                           x:Name="fromLanguageBorder"></Label>
+                </Border>
+                <ImageButton Grid.Column="1"
+                             x:Name="swapLanguagesButton"
+                             Source="swap_icon.png"
+                             Clicked="swapLanguagesButton_Clicked"></ImageButton>
+                <Border StrokeThickness="0"
+                        StrokeShape="RoundRectangle 4"
+                        BackgroundColor="#7F000000"
+                        Margin="10,0"
+                        Grid.Column="2">
+                    <Label Text="Французский"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="16"
+                           x:Name="toLanguageBorder"></Label>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="3">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Русский"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           FontSize="18"
+                           x:Name="topEditorLanguageLabel"></Label>
+                    <Border BackgroundColor="#40000000"
+                            StrokeThickness="0"
+                            HeightRequest="96"
+                            StrokeShape="RoundRectangle 4">
+                        <Grid Margin="16,4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="32"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Entry TextColor="White"
+                                   FontSize="18"
+                                   MaxLength="150"
+                                   x:Name="languageEditor"
+                                   TextChanged="languageEditor_TextChanged"
+                                   Completed="languageEditor_Completed"></Entry>
+                            <HorizontalStackLayout HorizontalOptions="End"
+                                                   VerticalOptions="Center"
+                                                   Spacing="8"
+                                                   Grid.Row="1">
+                                <Label Text="0"
+                                       TextColor="White"
+                                       Opacity="0.5"
+                                       x:Name="charsCountLabel"></Label>
+                                <Label Text="/"
+                                       TextColor="White"
+                                       Opacity="0.5"></Label>
+                                <Label Text="150"
+                                       TextColor="White"
+                                       Opacity="0.5"></Label>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </Grid>
+            <Grid Grid.Row="5">
+                <VerticalStackLayout Spacing="8"
+                                     VerticalOptions="Start">
+                    <Label Text="Французский"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           FontSize="18"
+                           x:Name="bottomEditorLanguageLabel"></Label>
+                    <Border BackgroundColor="#40000000"
+                            StrokeThickness="0"
+                            HeightRequest="192"
+                            StrokeShape="RoundRectangle 4">
+                        <Grid Margin="16,4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="32"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <ActivityIndicator x:Name="loadingTranslate"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"
+                                               HeightRequest="48"
+                                               WidthRequest="48"
+                                               Color="White"></ActivityIndicator>
+                            <Editor TextColor="White"
+                                    FontSize="18"
+                                    MaxLength="150"
+                                    IsReadOnly="True"
+                                    x:Name="translateReadOnlyEditor"></Editor>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

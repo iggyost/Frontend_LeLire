@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Frontend_LeLire.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Frontend_LeLire.Views.ContentPages"
+    Shell.FlyoutBehavior="Disabled">
+    <Shell.Items>
+        <TabBar>
+            <Tab Icon="showcase_icon.png"
+                 Title="Главная">
+                <ShellContent ContentTemplate="{DataTemplate local:HomePage}"
+                              Route="Home">
+                </ShellContent>
+            </Tab>
+            <Tab Icon="translator_icon.png"
+                 Title="Переводчик">
+                <ShellContent ContentTemplate="{DataTemplate local:TranslatePage}"
+                              Route="Translator"></ShellContent>
+            </Tab>
+            <Tab Icon="user_icon.png"
+                 Title="Профиль">
+                <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}"
+                              Route="Profile"></ShellContent>
+            </Tab>
+        </TabBar>
+    </Shell.Items>
+</Shell>

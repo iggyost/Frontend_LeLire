@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_LeLire.Views.ContentPages.PhoneEnterPage"
+             Title="PhoneEnterPage">
+    <Grid>
+        <Image Source="background_bloor.png"
+               Aspect="AspectFill"></Image>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <VerticalStackLayout VerticalOptions="Start"
+                                 HorizontalOptions="Center"
+                                 Grid.Row="1"
+                                 Spacing="12">
+                <Label Text="Введите номер телефона"
+                       TextColor="White"
+                       FontSize="24"></Label>
+                <Entry Placeholder="+7 999 999 99 99"
+                       FontSize="21"
+                       FontFamily="Literato-Regular"
+                       MaxLength="11"
+                       TextColor="White"
+                       x:Name="phoneEntry"
+                       Keyboard="Numeric"
+                       Completed="phoneEntry_Completed"
+                       ReturnType="Done"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"></Entry>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_LeLire.Views.ContentPages.ReaderPage"
+             Title="ReaderPage"
+             Shell.NavBarIsVisible="False"
+             Loaded="ContentPage_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <RadioButton x:Name="rusBtn"
+                         Content="Русский"
+                         IsChecked="True"
+                         Style="{StaticResource language}"
+                         CheckedChanged="rusBtn_CheckedChanged"></RadioButton>
+            <RadioButton x:Name="frBtn"
+                         Content="Французский"
+                         Grid.Column="1"
+                         Style="{StaticResource language}"
+                         CheckedChanged="frBtn_CheckedChanged"></RadioButton>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="1"
+                    HeightRequest="32"
+                    VerticalOptions="End"
+                    x:Name="pageCounterBorder"
+                    IsVisible="False">
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Spacing="6">
+                    <Label x:Name="currentPageLabel"
+                           WidthRequest="24"></Label>
+                    <Label Text=" / "></Label>
+                    <Label x:Name="totalPageLabel"
+                           WidthRequest="24"></Label>
+                </HorizontalStackLayout>
+            </Border>
+        </Grid>
+        <Label x:Name="alertLbl"
+               Grid.Row="2"
+               FontSize="40"
+               FontFamily="Literata-SemiBold"
+               LineBreakMode="WordWrap"
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"></Label>
+        <Image Aspect="AspectFit"
+               x:Name="pageImageViewRussian"
+               Grid.Row="2"
+               Margin="4"></Image>
+        <Image Aspect="AspectFit"
+               x:Name="pageImageViewFrench"
+               Grid.Row="2"
+               Margin="4"></Image>
+        <Button Grid.Row="2"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                HeightRequest="500"
+                WidthRequest="144"
+                BackgroundColor="Transparent"
+                x:Name="backBorder"
+                Clicked="backBorder_Clicked"></Button>
+        <Button Grid.Row="2"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                HeightRequest="500"
+                WidthRequest="144"
+                BackgroundColor="Transparent"
+                x:Name="forwardBorder"
+                Clicked="forwardBorder_Clicked"></Button>
+        <Button Grid.Row="2"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                HeightRequest="500"
+                WidthRequest="144"
+                BackgroundColor="Transparent"
+                x:Name="backFrenchBorder"
+                Clicked="backFrenchBorder_Clicked"></Button>
+        <Button Grid.Row="2"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                HeightRequest="500"
+                WidthRequest="144"
+                BackgroundColor="Transparent"
+                x:Name="forwardFrenchBorder"
+                Clicked="forwardFrenchBorder_Clicked"></Button>
+        <VerticalStackLayout Grid.Row="2"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Margin="0,0,0,64"
+                             Spacing="8">
+            <Label Text="Загрузка книги..."
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   FontSize="21"
+                   x:Name="isBusyText"></Label>
+            <ActivityIndicator x:Name="isBusyIndicator"
+                               Color="Black"></ActivityIndicator>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
